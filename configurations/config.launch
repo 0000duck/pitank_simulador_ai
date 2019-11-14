@@ -1,0 +1,43 @@
+<launch>
+
+  <!-- Show camera image (true/false) -->
+  <arg name="show_image" default="false"/>
+
+  <node pkg="game_engine" type="game_engine" name="game_engine" output="screen">
+
+      <!-- xBee ordered addresses (last two numbers of the address because the first two are always 10) -->
+
+      <param name="addr1" type="int" value="00"/>
+      <param name="addr2" type="int" value="02"/>
+      <param name="addr3" type="int" value="05"/>
+      <param name="addr4" type="int" value="09"/>
+
+
+      <!-- tag ordered ids -->
+
+      <param name="tag_id1" type="int" value="0"/>
+      <param name="tag_id2" type="int" value="4"/>
+      <param name="tag_id3" type="int" value="13"/>
+      <param name="tag_id4" type="int" value="15"/>
+
+      <!-- camera position -->
+
+      <param name="cam_pos_x" type="double" value="477.25"/> <!-- pixels -->
+      <param name="cam_pos_y" type="double" value="366.40"/> <!-- pixels -->
+      <param name="cam_pos_z" type="double" value="2.15"/>   <!-- meters -->
+
+  </node>
+
+
+
+  <group if="$(arg show_image)">
+     <node pkg="image_view" type="image_view" name="creative_view" >
+        <remap from="image" to="image_raw" />
+	<param name="image_transport" value="compressed" />
+     </node>
+  </group>
+
+
+
+
+</launch>

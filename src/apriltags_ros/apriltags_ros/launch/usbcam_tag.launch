@@ -1,0 +1,36 @@
+<launch>
+  <node pkg="apriltags_ros" type="apriltag_detector_node" name="apriltag_detector" output="screen">
+    <!-- Remap topic required by the node to custom topics -->
+    <remap from="image_rect" to="/usb_cam/image_raw" />
+    <remap from="camera_info" to="/usb_cam/camera_info"/>
+
+    <!-- Optional: Subscribe to the compressed stream-->
+    <param name="image_transport" type="str" value="compressed" />
+
+    <!-- Select the tag family: 16h5, 25h7, 25h9, 36h9, or 36h11(default) -->
+    <param name="tag_family" type="str" value="36h11" />
+
+    <!-- Enable projected optical measurements for more accurate tag transformations -->
+    <!-- This exists for backwards compatability and should be left true for new setups -->
+    <param name="projected_optics" type="bool" value="false"/>
+
+    <!-- dont use cam info -->
+    <param name="use_cam_info" type="bool" value="false"/>
+
+    <!-- focal and position points -->
+    <param name="cam_fx" value="386.811552" />
+    <param name="cam_fy" value="387.691086" />
+    <param name="cam_px" value="216.263416" />
+    <param name="cam_py" value="156.787065" />
+
+    <param name="cam_position_roll"  type="double" value="0.0"/>
+    <param name="cam_position_pitch" type="double" value="0.0"/>
+    <param name="cam_position_yaw"   type="double" value="0.0"/>
+
+    <param name="cam_position_x"  type="double" value="0.0"/>
+    <param name="cam_position_y" type="double" value="0.0"/>
+    <param name="cam_position_z"   type="double" value="0.0"/>
+    <rosparam param="tag_descriptions">[{id: 0, size: 0.112}, {id: 2, size: 0.4}]</rosparam>
+
+   </node>
+</launch>

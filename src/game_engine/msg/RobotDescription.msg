@@ -1,0 +1,20 @@
+int8 teamId
+int8 tagId
+int16 x
+int16 y
+float64 height
+float64 angle
+uint8 addr0
+uint8 addr1
+int8 vel1
+int8 vel2
+int8 previous_vel
+bool collisionFlag
+bool threadIsRunning
+int8 collisionStateVar
+bool autonomous_drive
+bool immobilized
+int8 damage
+int8 kills
+int8 classification
+

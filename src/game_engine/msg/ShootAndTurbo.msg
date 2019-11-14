@@ -1,0 +1,2 @@
+bool shoot
+bool turbo
